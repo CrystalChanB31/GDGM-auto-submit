@@ -25,7 +25,7 @@ users:
       email: 
       school: 
 
-#今日校园相关配置
+#今日校园相关配置 
 cpdaily:
   #表单组默认选项配置    
   defaults:
