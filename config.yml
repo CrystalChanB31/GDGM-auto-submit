@@ -1,7 +1,7 @@
 #登陆相关配置
 login:
   #开放的模拟登陆api服务器地址
-  api: "http://119.29.153.208:8080/wisedu-unified-login-api-v1.0/api/login"
+  api: "http://#我的服务器地址#:8080/wisedu-unified-login-api-v1.0/api/login"
 #用户组配置
 users:
   #单个用户配置
@@ -51,7 +51,7 @@ cpdaily:
         value: 良好
 
 Info:
-  ServerChan: SCU131569Tabfa56939ddcd58512d74e9d73215a415fc5c3a9a4ba6 # 填写Server酱的SCKEY
+  ServerChan: SCKEY # 填写Server酱的SCKEY
   Qsmg: # 填写Qsmg酱的SCKEY
   Email:
     enable: false
