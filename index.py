@@ -29,7 +29,7 @@ def getYmlConfig(yaml_file='config.yml'):
     return dict(config)
 
 
-# 全局配置
+#  全局配置
 config = getYmlConfig(yaml_file='config.yml')
 
 
