@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-#本项目非原创，原作者Github地址：https://github.com/ZimoLoveShuang/auto-submit
+#本项目非原创，原作者Github地址：https://github.com/ZimoLoveShuang
 #本项目基于第三方转化而成，源地址：https://github.com/ZimoLoveShuang/auto-submit
 #目前，本项目经过配置，适合广东工贸职业技术学院的同学使用，由19安管3班1名同学负责运行维护。
 import sys
