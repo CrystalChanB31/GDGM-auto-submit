@@ -1,0 +1,61 @@
+#登陆相关配置
+login:
+  #开放的模拟登陆api服务器地址
+  api: "http://119.29.153.208:8080/wisedu-unified-login-api-v1.0/api/login"
+#用户组配置
+users:
+  #单个用户配置
+  - user:
+      #username 数字工贸学号
+      username: ''
+      #password 数字工贸密码
+      password: ''
+      #address 地址，定位信息
+      address: 中国广东省广州市天河区广州大道北1098号
+      #email 接受通知消息的邮箱
+      #已取消，改成server酱推送
+      email: 
+      #school 学校全称
+      school: 广东工贸职业技术学院
+  #多用户配置，配置与上面同理
+  - user:
+      username: 
+      password: 
+      address: 
+      email: 
+      school: 
+
+#今日校园相关配置
+cpdaily:
+  #表单组默认选项配置    
+  defaults:
+    #表单默认选项配置，按顺序，注意，只有标必填项的才处理
+    - default:
+        #表单项类型，对应今日校园接口返回的fieldType字段，1代表文本，2代表单选，3代表多选，4代表图片 
+        type: 2
+        #表单项标题
+        title: 你现在是否正在参加项目化教学实习或现代学徒制实习？
+        #表单项默认值
+        value: 否
+    - default:
+        type: 2
+        title: 今日体温℃
+        value: 正常小于37.3℃
+    - default:
+        type: 1
+        title: 目前体温（单位：℃）
+        value: "36.5"
+    -  default:
+        type: 2
+        title: 健康状况
+        value: 良好
+
+Info:
+  ServerChan: SCU131569Tabfa56939ddcd58512d74e9d73215a415fc5c3a9a4ba6 # 填写Server酱的SCKEY
+  Qsmg: # 填写Qsmg酱的SCKEY
+  Email:
+    enable: false
+    server:  # 填写邮件的smtp服务器
+    port:  # 填写邮件服务器的端口号
+    account: '' # 邮件服务器登录用户名
+    password: '' # 邮件服务器登录密码
