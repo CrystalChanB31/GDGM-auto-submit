@@ -1,7 +1,4 @@
 # -*- coding: utf-8 -*-
-#本项目非原创，原作者Github地址：https://github.com/ZimoLoveShuang
-#本项目基于第三方转化而成，源地址：https://github.com/ZimoLoveShuang/auto-submit
-#目前，本项目经过配置，适合广东工贸职业技术学院的同学使用，由19安管3班1名同学负责运行维护。
 import sys
 import requests
 import json
@@ -29,7 +26,7 @@ def getYmlConfig(yaml_file='config.yml'):
     return dict(config)
 
 
-#  全局配置
+# 全局配置
 config = getYmlConfig(yaml_file='config.yml')
 
 
@@ -129,7 +126,7 @@ def queryForm(session, apis):
     host = apis['host']
     headers = {
         'Accept': 'application/json, text/plain, */*',
-        'User-Agent': 'Mozilla/5.0 (Linux; Android 4.4.4; OPPO R11 Plus Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/33.0.0.0 Safari/537.36 yiban/8.1.11 cpdaily/8.1.11 wisedu/8.1.11',
+        'User-Agent': 'Mozilla/5.0 (Linux; Android 4.4.4; OPPO R11 Plus Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/33.0.0.0 Safari/537.36 yiban/8.1.11 cpdaily/8.2.14 wisedu/8.2.14',
         'content-type': 'application/json',
         'Accept-Encoding': 'gzip,deflate',
         'Accept-Language': 'zh-CN,en-US;q=0.8',
@@ -205,6 +202,15 @@ def fillForm(session, form, host):
             log('必填问题%d：' % sort + formItem['title'])
             log('答案%d：' % sort + formItem['value'])
             sort += 1
+        elif formItem['isRequired']==0:
+            if formItem['title']=='你是否还在项目化教学实习单位或现代学徒制实习单位？':
+                formItem['value']= '否'
+                fieldItems = formItem['fieldItems']
+                for i in range(0, len(fieldItems))[::-1]:
+                    if fieldItems[i]['content'] !='否' : #default['value']
+                        del fieldItems[i]
+            log('选填问题%d：' % sort+formItem['title'])
+            log('答案%d：' % sort+formItem['value'])
         else:
             form.remove(formItem)
     # print(form)
@@ -249,22 +255,21 @@ def getPictureUrl(session, fileName, host):
 
 
 # 提交表单
-def submitForm(formWid, address, collectWid, schoolTaskWid, form, session, host):
+def submitForm(formWid, address, collectWid, schoolTaskWid, form, session, host, lati, long):
     headers = {
         'User-Agent': 'Mozilla/5.0 (Linux; Android 4.4.4; OPPO R11 Plus Build/KTU84P) AppleWebKit/537.36 (KHTML, like Gecko) Version/4.0 Chrome/33.0.0.0 Safari/537.36 okhttp/3.12.4',
         'CpdailyStandAlone': '0',
         'extension': '1',
-        'Cpdaily-Extension': '1wAXD2TvR72sQ8u+0Dw8Dr1Qo1jhbem8Nr+LOE6xdiqxKKuj5sXbDTrOWcaf v1X35UtZdUfxokyuIKD4mPPw5LwwsQXbVZ0Q+sXnuKEpPOtk2KDzQoQ89KVs gslxPICKmyfvEpl58eloAZSZpaLc3ifgciGw+PIdB6vOsm2H6KSbwD8FpjY3 3Tprn2s5jeHOp/3GcSdmiFLYwYXjBt7pwgd/ERR3HiBfCgGGTclquQz+tgjJ PdnDjA==',
+        'Cpdaily-Extension': 'eZbW2qLZT0G0VbYqnj5mz5UCyZiuS+Mht0ro4VCSTgTancCpi4ru3IpfZibLN2Q4JR3dl7wYTXnTi5dzfAwbYcs5FB4VPqOTrcYNVjoRY9h9J7sxA1MWIWZxiEC7iuzXwAeEjrGmnHnX3P7mprZW66fbhNsIrM938cVo6aK7fgdQx6vGY7OVJBS+kqwk/xE2ipLqV0ro4QNZ9u/6G9MUbyd7QghLIM9PIRJTrd6TzoYPFBHqDHIY57dHHUBUC8RzfvreU/2o5sY=',
         'Content-Type': 'application/json; charset=utf-8',
         # 请注意这个应该和配置文件中的host保持一致
         'Host': host,
         'Connection': 'Keep-Alive',
         'Accept-Encoding': 'gzip'
     }
-
     # 默认正常的提交参数json
     params = {"formWid": formWid, "address": address, "collectWid": collectWid, "schoolTaskWid": schoolTaskWid,
-              "form": form, "uaIsCpadaily": True}
+              "form": form, "uaIsCpadaily": True,"latitude": lati,"longitude": long}
     # print(params)
     submitForm = 'https://{host}/wec-counselor-collector-apps/stu/collector/submitForm'.format(
         host=host)
@@ -279,7 +284,7 @@ title_text = '广东工贸今日校园自动填表结果推送'
 def sendMessage(send, msg):
     if send != '':
         log('正在发送邮件通知。。。')
-        res = requests.post(url='http://www.higercorporation.cn/mail-sender/sendMail',
+        res = requests.post(url='',
                             data={'title': title_text, 'content': getTimeStr() + str(msg), 'to': send})
 
         code = res.json()['code']
@@ -310,7 +315,7 @@ def sendEmail(send,msg):
 # server酱通知
 def sendServerChan(msg):
     log('正在发送Server酱。。。')
-    res = requests.post(url='https://sc.ftqq.com/{0}.send'.format(config['Info']['ServerChan']),
+    res = requests.post(url='https://sc.ftqq.com/{0}.send'.format(config['Info']['ServerChan']),#2021-01-27更改：https==http
                             data={'text': title_text, 'desp': getTimeStr() + "\n" + str(msg)})
     code = res.json()['errmsg']
     if code == 'success':
@@ -362,7 +367,7 @@ def main_handler(event, context):
                 log('填写问卷成功。。。')
                 log('正在自动提交。。。')
                 msg = submitForm(params['formWid'], user['user']['address'], params['collectWid'],
-                                 params['schoolTaskWid'], form, session, apis['host'])
+                                 params['schoolTaskWid'], form, session, apis['host'],user['user']['lat'],user['user']['lon'])
                 if msg == 'SUCCESS':
                     log('自动提交成功！')
                     InfoSubmit('今天的自动提交成功了！（ ^ω^）丿')
