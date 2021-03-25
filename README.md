@@ -6,6 +6,7 @@
 本项目开源，根据作者要求：禁止他人进行付费代挂服务。<br>
 更多消息请前往原作者的项目地址下进行查看https://github.com/ZimoLoveShuang/auto-submit ， https://github.com/ZimoLoveShuang/tree/ruoli <br>
 欢迎有能力的同学一起参与 <br>
+
 # 2021年3月21日更新：
 <br>
 修复了获取模拟登录URL解码失败的问题
