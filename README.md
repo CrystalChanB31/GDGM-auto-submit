@@ -1,11 +1,17 @@
 # 今日校园自动填表广东工贸职业技术学院版
 广东工贸今日校园自动填表 项目 <br>
-本项目主要函数并非我原创，原作者地址为https://github.com/ZimoLoveShuang<br>
+本新执行函数的作者地址为https://github.com/ZimoLoveShuang/tree/ruoli<br>
 我将其进行优化，使得该项目可以专门面向广东工贸职业技术学院的同学使用<br>
-目前，该函数API调用的服务器均为我个人的服务器。 <br>
+
 本项目开源，根据作者要求：禁止他人进行付费代挂服务。<br>
-更多消息请前往原作者的项目地址下进行查看https://github.com/ZimoLoveShuang/auto-submit <br>
+更多消息请前往原作者的项目地址下进行查看https://github.com/ZimoLoveShuang/auto-submit ， https://github.com/ZimoLoveShuang/tree/ruoli <br>
 欢迎有能力的同学一起参与 <br>
+# 2021年3月21日更新：
+<br>
+修复了获取模拟登录URL解码失败的问题
+<br>
+取消了原来的需要借助服务器搭建的API登录功能，提升了一次提交的成功几率和程序的运行效率
+<br>
 # 2021年2月4日更新：
 <br>
 增加了经纬度定位信息，修复了定位失败的BUG
