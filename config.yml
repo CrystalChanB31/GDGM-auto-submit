@@ -1,63 +1,29 @@
-#登陆相关配置
-login:
-  #开放的模拟登陆api服务器地址
-  api: "/*你的接口API地址*/"
+author: 若离QQ：2909998156
 #用户组配置
 users:
-  #单个用户配置
+  # 单个用户配置
+  # 以下配置为签到配置的模板，这里是使用的武汉船舶职业技术学院
   - user:
-      #username 学号或者工号
-      username: ''
-      #password 密码
-      password: ''
-      #address 地址，定位信息
-      lon: /*经度信息，直接写数字，不用引号*/
-      lat: /*纬度信息，直接写数字，不用引号*/
-      address: 地址信息
-      #email 接受通知消息的邮箱
-      email: /*邮箱信息*/
-      #school 学校全称
-      school: 广东工贸职业技术学院
-  
-#今日校园相关配置
-cpdaily:
-  #表单组默认选项配置    
-  defaults:
-    #表单默认选项配置，按顺序，注意，只有标必填项的才处理
-    - default:
-        #表单项类型，对应今日校园接口返回的fieldType字段，1代表文本，2代表单选，3代表多选，4代表图片
-        type: 2
-        #表单项标题
-        #title: 近期是否去过中高风险地区（北京，辽宁，成都郫县等）
-        title: 你目前是否在岗实习（不含兼职）？
-        #表单项默认值
-        value: 否
-    #- default:
-    #    type: 2
-    #    title: 你是否还在项目化教学实习单位或现代学徒制实习单位？
-    #    value: 否
-    - default:
-        type: 2
-        title: 今日体温℃
-        value: 正常小于37.3℃
-    - default:
-        type: 1
-        #title: 元旦假期外出地点填写（如：不外出，填写无）
-        title: 目前体温（单位：℃）
-        value: "36.5"
-        #value: 无
-    -  default:
-        type: 2
-        title: 健康状况
-        value: 良好
-
-Info:
-  ServerChan:
-  # 填写Server酱的SCKEY
-  Qsmg: # 填写Qsmg酱的SCKEY
-  Email:
-    enable: false
-    server:  # 填写邮件的smtp服务器
-    port: 25 #填写邮件服务器的端口号
-    account: '' # 邮件服务器登录用户名
-    password: '' # 邮件服务器登录密码
+      # 任务类型（收集：0、签到：1、查寝2）
+      type: 0
+      username: '' #用户的登录账户（学号）
+      password: '' #用户的登录密码（数字工贸）
+      address: 中国广东省广州市天河区牛利岗北街 #表单下方定位地址的内容信息
+      schoolName: 广东工贸职业技术学院 #学校全称
+      lon: 113.320796 #经度
+      lat: 23.172931 #纬度
+      checkTitle: 1
+      # 表单信息
+      forms:
+        - form:
+            title: 你目前是否在岗实习（不含兼职）？
+            value:  否
+        - form:
+            title: 今日体温℃
+            value: 正常小于37.3℃
+        - form:
+            title: 目前体温（单位：℃）
+            value: "36.5"
+        - form:
+            title: 健康状况
+            value: 良好
