@@ -7,11 +7,9 @@
 更多消息请前往原作者的项目地址下进行查看https://github.com/ZimoLoveShuang/auto-submit ， https://github.com/ZimoLoveShuang/tree/ruoli <br>
 欢迎有能力的同学一起参与 <br>
 
-# 2021年3月21日更新：
+# 2021年4月14日更新：
 <br>
-修复了获取模拟登录URL解码失败的问题
-<br>
-取消了原来的需要借助服务器搭建的API登录功能，提升了一次提交的成功几率和程序的运行效率
+[+]增加通知模块
 <br>
 # 2021年2月4日更新：
 <br>
