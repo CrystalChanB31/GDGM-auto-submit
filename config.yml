@@ -1,17 +1,17 @@
 author: 若离QQ：2909998156
+debug: false
 #用户组配置
 users:
-  # 单个用户配置
-  # 以下配置为签到配置的模板，这里是使用的武汉船舶职业技术学院
   - user:
       # 任务类型（收集：0、签到：1、查寝2）
       type: 0
-      username: '' #用户的登录账户（学号）
-      password: '' #用户的登录密码（数字工贸）
-      address: 中国广东省广州市天河区牛利岗北街 #表单下方定位地址的内容信息
-      schoolName: 广东工贸职业技术学院 #学校全称
-      lon: 113.320796 #经度
-      lat: 23.172931 #纬度
+      username: '学号'
+      password: '密码'
+      address: 中国广东省广州市天河区牛利岗北街
+      email: '用户名'
+      schoolName: 广东工贸职业技术学院
+      lon: 113.320796
+      lat: 23.172931
       checkTitle: 1
       # 表单信息
       forms:
@@ -23,7 +23,7 @@ users:
             value: 正常小于37.3℃
         - form:
             title: 目前体温（单位：℃）
-            value: "36.5"
+            value: "36.1"
         - form:
             title: 健康状况
             value: 良好
